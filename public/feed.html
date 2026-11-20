@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed — SocialApp</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="/feed.html" class="navbar-brand">✨ SocialApp</a>
+    <div class="navbar-search">
+      <input type="text" id="search-input" placeholder="Search users...">
+      <div class="search-dropdown hidden" id="search-results"></div>
+    </div>
+    <div class="navbar-actions">
+      <a href="#" id="nav-profile-link">My Profile</a>
+      <button class="btn-outline btn-sm" id="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Main layout -->
+  <div class="feed-layout">
+    <!-- Left sidebar -->
+    <aside class="sidebar-left">
+      <div class="card sidebar-profile-card">
+        <a id="sidebar-profile-link" href="/profile.html">
+          <img id="sidebar-avatar" src="" alt="avatar" class="sidebar-avatar">
+        </a>
+        <span class="sidebar-username" id="sidebar-username">@username</span>
+        <span class="sidebar-bio" id="sidebar-bio"></span>
+        <div class="sidebar-stats">
+          <div class="sidebar-stat">
+            <span class="sidebar-stat-num" id="sidebar-followers">0</span>
+            <span class="sidebar-stat-label">Followers</span>
+          </div>
+          <div class="sidebar-stat">
+            <span class="sidebar-stat-num" id="sidebar-following">0</span>
+            <span class="sidebar-stat-label">Following</span>
+          </div>
+        </div>
+        <a id="sidebar-profile-link-2" href="/profile.html" class="sidebar-profile-link">View Profile →</a>
+      </div>
+    </aside>
+
+    <!-- Center feed -->
+    <main class="feed-center">
+      <!-- Create post -->
+      <div class="create-post-card">
+        <form id="create-post-form">
+          <textarea
+            id="post-content"
+            placeholder="What's on your mind? Share something..."
+            maxlength="1000"
+          ></textarea>
+          <input
+            type="url"
+            id="post-image-url"
+            placeholder="📎 Image URL (optional)"
+          >
+          <div class="create-post-footer">
+            <button type="submit" class="btn-primary">Post</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Feed posts -->
+      <div id="feed">
+        <div class="loading">Loading your feed...</div>
+      </div>
+    </main>
+
+    <!-- Right sidebar -->
+    <aside class="sidebar-right">
+      <div class="card">
+        <div class="sidebar-title">Who to Follow</div>
+        <div id="suggestions-list">
+          <div class="loading" style="padding:1rem 0;">Loading...</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container"></div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/feed.js"></script>
+</body>
+</html>

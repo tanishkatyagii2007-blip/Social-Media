@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — SocialApp</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="/feed.html" class="navbar-brand">✨ SocialApp</a>
+    <div class="navbar-search">
+      <input type="text" id="search-input" placeholder="Search users...">
+      <div class="search-dropdown hidden" id="search-results"></div>
+    </div>
+    <div class="navbar-actions">
+      <a href="/feed.html">Feed</a>
+      <a href="#" id="nav-profile-link">My Profile</a>
+      <button class="btn-outline btn-sm" id="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Profile layout -->
+  <div class="profile-layout" id="profile-container">
+    <!-- Profile header -->
+    <div class="card profile-header-card">
+      <div class="profile-avatar-wrap">
+        <img id="profile-avatar" src="" alt="avatar" class="profile-avatar">
+      </div>
+      <div class="profile-info">
+        <div class="profile-username" id="profile-username">@username</div>
+        <div class="profile-bio" id="profile-bio">No bio yet.</div>
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="profile-stat-num" id="profile-posts-count">0</span>
+            <span class="profile-stat-label">Posts</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-num" id="profile-followers-count">0</span>
+            <span class="profile-stat-label">Followers</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-num" id="profile-following-count">0</span>
+            <span class="profile-stat-label">Following</span>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="btn-primary hidden" id="follow-btn" data-following="false">Follow</button>
+          <button class="btn-outline hidden" id="edit-profile-btn">✏️ Edit Profile</button>
+        </div>
+
+        <!-- Edit form (hidden by default) -->
+        <form class="edit-profile-form hidden" id="edit-profile-form">
+          <div class="form-group">
+            <label>Bio</label>
+            <textarea id="edit-bio" rows="3" maxlength="200" placeholder="Tell people about yourself..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Avatar URL</label>
+            <input type="url" id="edit-avatar" placeholder="https://example.com/avatar.jpg">
+          </div>
+          <button type="submit" class="btn-primary btn-sm">Save Changes</button>
+          <button type="button" class="btn-outline btn-sm" id="cancel-edit-btn" onclick="document.getElementById('edit-profile-form').classList.add('hidden')">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Posts section -->
+    <div class="profile-posts-section card" style="padding: 1.5rem;">
+      <h2>Posts</h2>
+      <div id="profile-posts">
+        <div class="loading">Loading posts...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container"></div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>
